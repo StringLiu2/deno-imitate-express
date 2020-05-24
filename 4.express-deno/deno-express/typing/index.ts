@@ -4,6 +4,7 @@ import { ServerRequest, HTTPOptions } from 'https://deno.land/std@0.50.0/http/se
 export interface Context extends ServerRequest {
     send: (body: any) => void; // 响应数据源的方法
     params: Record<string, string>; // 动态路由返回的params对象
+    data: Record<string, string>;
 }
 
 // 个个请求的回调函数，或者中间件的回调函数的类型
@@ -23,6 +24,7 @@ export interface Listen {
 export interface Route {
     path: string;
     callback: Callback;
+    isMiddleware: boolean;
 }
 export interface Routers {
     [key: string]: Route[];
