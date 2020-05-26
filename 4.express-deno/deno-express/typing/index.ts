@@ -5,6 +5,7 @@ export interface Context extends ServerRequest {
     send: (body: any) => void; // 响应数据源的方法
     params: Record<string, string>; // 动态路由返回的params对象
     data: Record<string, string>;
+    path: string; // path放到context上面
 }
 
 // 个个请求的回调函数，或者中间件的回调函数的类型

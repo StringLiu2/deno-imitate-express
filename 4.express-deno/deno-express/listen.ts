@@ -38,6 +38,7 @@ export default function listen(this: App, options: HTTPOptions, listenCallback?:
             }
             const route = routes[i];
             // route.path === "*" 就是什么样的请求路径都调用
+            (ctx as Context).path = route.path; // 设置path到上下文
             if (
                 route.path === ctx.url || route.path === "*" ||
                 // 给route设置一个变量，如果为true就是中间件

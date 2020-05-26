@@ -13,6 +13,7 @@ app.use('/user', (request, response, next) => {
   next();
 }); // 中间件
 app.get('/user/a', (req, res) => {
+  console.log(req.path)
   res.send('user a');
 })
 app.get('/', (request, response, next) => {
@@ -38,8 +39,8 @@ app.delete('/', (request, response) => {
   response.send('hello express delete');
 });
 // 动态路由
-app.delete('/:id', (request, response) => {
-  console.log(request.params); // { id: '111' }
+app.delete('/:id/:name', (request, response) => {
+  console.log(request.params); // { id: '111', name: 'xxx' }
   response.send('hello express delete');
 });
 // 监听

@@ -1,6 +1,7 @@
-import { App, Routers, Callback, Context } from "./typing/index.ts";
+import { App, Routers, Callback } from "./typing/index.ts";
 import listen from "./listen.ts";
 import methodFn from "./methodFn.ts";
+import staticFile from "./static.ts";
 
 const methods = ['get', 'post', 'put', 'patch', 'delete'];
 
@@ -28,3 +29,4 @@ function use(this: App, path: string | Callback, ...funs: Callback[]) {
         methodFn.call(this, type, true)(path, ...funs);
     }
 }
+denoExpress.static = staticFile;
