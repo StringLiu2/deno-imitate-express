@@ -14,8 +14,7 @@ export default function cors() {
             headers.set("Access-Control-Allow-Headers", "X-Requested-With");
             headers.set("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
             headers.set("X-Powered-By", ' 3.2.1');
-            oldRespond.call(ctx, { ...r, headers });
-            return Promise.resolve();
+            return oldRespond.call(ctx, { ...r, headers });
         }
         next();
     }
