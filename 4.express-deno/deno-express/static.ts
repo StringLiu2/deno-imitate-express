@@ -4,10 +4,9 @@ import mimes from "../mime/index.ts";
 
 // app.use(express.static('path'))
 export default function staticFile(path: string) {
-    if (!path) path = 'public'; // 默认文件夹的位置
     return async (ctx: Context, next: Function) => {
         try {
-            // 因为我们没有给默认path的话， 他就会是 * 
+            // 我们中间件默认没给path,就是ctx.path 默认还是 * 
             const ctxPath = ctx.path === '*' ? '' : ctx.path;
             // 拿到ctx.path ， 把ctx.url 前面部分通过ctx.path剪切
             const url = ctx.url.replace(new RegExp(`^${ctxPath}`), '');
